@@ -1,63 +1,68 @@
-# TigratikaTest
+# Название вашего проекта
 
-## Установка
+## Развертывание с использованием Docker
+
+### Предварительные требования
+
+- Docker
+- Docker Compose
+
+### Шаги по развертыванию
 
 1. Клонируйте репозиторий:
-    ```bash
-    git clone https://github.com/KalyaginVasiliy/TigratikaTest.git
-    ```
+   git clone https://github.com/your-username/your-repo.git
+   cd your-repo
 
-2. Перейдите в директорию проекта:
-    ```bash
-    cd TigratikaTest
-    ```
 
-3. Установите зависимости через Composer:
-    ```bash
-    composer install
-    ```
+2. Скопируйте файл .env.example в .env и настройте переменные окружения:
 
-4. Скопируйте файл `.env.example` в `.env`:
-    ```bash
-    cp .env.example .env
-    ```
+cp .env.example .env
 
-5. Сгенерируйте ключ приложения:
-    ```bash
-    php artisan key:generate
-    ```
 
-6. Настройте параметры базы данных в файле `.env`.
+Откройте файл .env и настройте переменные окружения, особенно те, которые связаны с базой данных.
 
-7. Запустите миграции:
-    ```bash
-    php artisan migrate
-    ```
+3. Соберите и запустите Docker-контейнеры:
 
-## Запуск
+docker-compose up -d --build
 
-1. Установите зависимости Node.js:
-    ```bash
-    npm install
-    ```
 
-2. Скомпилируйте файлы Vue.js:
-    ```bash
-    npm run dev
-    ```
+4. Установите зависимости PHP через Composer:
 
-3. Запустите локальный сервер разработки Laravel:
-    ```bash
-    php artisan serve
-    ```
+docker-compose exec app composer install
 
-4. Перейдите в браузере по адресу:
-    ```
-    http://localhost:8000
-    ```
 
-## Дополнительно
+5. Установите зависимости JavaScript и соберите фронтенд:
 
-Для запуска тестов выполните команду:
-```bash
-php artisan test
+docker-compose exec app npm install
+docker-compose exec app npm run build
+
+
+6. Выполните миграции базы данных:
+
+docker-compose exec app php artisan migrate
+
+
+7. Сгенерируйте ключ приложения:
+
+docker-compose exec app php artisan key:generate
+
+
+8. Очистите кэш конфигурации:
+
+docker-compose exec app php artisan config:cache
+
+
+9. Приложение будет доступно по адресу http://localhost:8000
+
+### Остановка приложения
+
+Чтобы остановить и удалить контейнеры, сети и тома, выполните:
+
+docker-compose down -v
+
+
+### Полезные команды
+
+- Просмотр логов: `docker-compose logs`
+- Перезапуск контейнеров: `docker-compose restart`
+- Выполнение команды в контейнере приложения: `docker-compose exec app your-comma

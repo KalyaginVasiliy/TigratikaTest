@@ -10,7 +10,7 @@
 ### Шаги по развертыванию
 
 1. Клонируйте репозиторий:
-   git clone https://github.com/your-username/your-repo.git
+   git clone https://github.com/KalyaginVasiliy/TigratikaTest.git
    cd your-repo
 
 

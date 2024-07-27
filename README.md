@@ -11,7 +11,7 @@
 
 1. Клонируйте репозиторий:
    git clone https://github.com/KalyaginVasiliy/TigratikaTest.git
-   cd your-repo
+   cd TigratikaTest
 
 
 2. Скопируйте файл .env.example в .env и настройте переменные окружения:
